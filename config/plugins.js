@@ -7,15 +7,20 @@ module.exports = ({ env }) => ({
         api_key: env("CLOUDINARY_KEY"),
         api_secret: env("CLOUDINARY_SECRET"),
       },
-      // use graphql on Heroku
+    },
+  },
+
+  graphql: {
+    config: {
       endpoint: "/graphql",
       shadowCRUD: true,
       playgroundAlways: true,
       depthLimit: 100,
+      amountLimit: 100,
       apolloServer: {
         tracing: false,
+        introspection: true,
       },
-      // use graphql on Heroku ^
     },
   },
 });
